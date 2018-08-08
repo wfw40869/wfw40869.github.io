@@ -165,6 +165,16 @@
 			}
 		}
 		var circles = [];
+		var text = new paper.PointText(new Point(view.center));
+		text.justification = 'center';
+		text.fillColor = 'white';
+		text.content = 'Push any key from A-Z to play a sound/animation';
+
+
+		function onResize(event){
+			text.point = view.center;
+		}
+		
 		function onKeyDown(event) {
 			if(keyData[event.key]){
 				var maxPoint = new Point(view.size.width, view.size.height);
