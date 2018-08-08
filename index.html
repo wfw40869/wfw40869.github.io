@@ -6,7 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/circles.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.14/howler.core.min.js"></script>
 	<script type="text/paperscript" canvas="myCanvas">
+
 		var keyData = {
+
 			q: {
 				sound: new Howl({
 					src: ['sounds/bubbles.mp3']
@@ -89,7 +91,7 @@
 				sound: new Howl({
 					src: ['sounds/prism-1.mp3']
 				}),
-				color: '#95a5a6'
+				color: '#ABD1D4'
 			},
 			g: {
 				sound: new Howl({
@@ -164,18 +166,24 @@
 				color: '#2c3e50'
 			}
 		}
+
+		
 		var circles = [];
 		var text = new paper.PointText(new Point(view.center));
 		text.justification = 'center';
-		text.fillColor = 'white';
+		text.fillColor = 'black';
+		text.fontFamily = "Lucida Grande";
+		text.fontSize = "17px";
 		text.content = 'Push any key from A-Z to play a sound/animation';
 
 
 		function onResize(event){
 			text.point = view.center;
 		}
-		
+
+
 		function onKeyDown(event) {
+		text.style.fontSize = 0;
 			if(keyData[event.key]){
 				var maxPoint = new Point(view.size.width, view.size.height);
 				var randomPoint = Point.random();
@@ -186,6 +194,8 @@
 				circles.push(newCircle);
 			}
 		}
+
+
 		function onFrame(event){
 			for(var i = 0; i < circles.length; i++){
 				circles[i].fillColor.hue += 1;
@@ -203,5 +213,6 @@
 </head>
 <body>
 	<canvas id="myCanvas" resize></canvas>
+
 </body>
 </html>
